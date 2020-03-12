@@ -15,18 +15,42 @@
             <language>en</language>
         
         
-            <managingEditor>reuixiy@gmail.com (reuixiy)</managingEditor>
+            <managingEditor>z.giny@foxmail.com (Nadia)</managingEditor>
         
         
-            <webMaster>reuixiy@gmail.com (reuixiy)</webMaster>
+            <webMaster>z.giny@foxmail.com (Nadia)</webMaster>
         
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
         
-        <lastBuildDate>Thu, 12 Mar 2020 22:23:14 +0800</lastBuildDate>
+        <lastBuildDate>Thu, 12 Mar 2020 22:53:29 +0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://utenau.github.io/rss.xml" />
         
+        
+            <item>
+                <title>Hello World</title>
+                <link>https://utenau.github.io/posts/hello-world/</link>
+                <guid isPermaLink="true">https://utenau.github.io/posts/hello-world/</guid>
+                <pubDate>Thu, 12 Mar 2020 21:06:03 +0800</pubDate>
+                
+                    <author>z.giny@foxmail.com (Nadia)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
+                
+                    <description><![CDATA[]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>My First Post</title>
@@ -34,7 +58,7 @@
                 <guid isPermaLink="true">https://utenau.github.io/posts/my-first-post/</guid>
                 <pubDate>Thu, 30 Jan 2020 10:42:20 +0800</pubDate>
                 
-                    <author>reuixiy@gmail.com (reuixiy)</author>
+                    <author>z.giny@foxmail.com (Nadia)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</copyright>
                 
