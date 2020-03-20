@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
     <title type="text">Kira Star</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2020-03-14T10:36:26+08:00</updated>
+    <updated>2020-03-21T00:18:47+08:00</updated>
     <id>https://utenau.github.io/</id>
     <link rel="alternate" type="text/html" href="https://utenau.github.io/" />
     <link rel="self" type="application/atom+xml" href="https://utenau.github.io/atom.xml" />
@@ -16,6 +16,446 @@
             </author>
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.62.2">Hugo</generator>
+        <entry>
+            <title type="text">Node Js初体验</title>
+            <link rel="alternate" type="text/html" href="https://utenau.github.io/posts/node-js%E5%88%9D%E4%BD%93%E9%AA%8C/" />
+            <id>https://utenau.github.io/posts/node-js%E5%88%9D%E4%BD%93%E9%AA%8C/</id>
+            <updated>2020-03-21T00:07:00+08:00</updated>
+            <published>2020-03-20T15:21:43+08:00</published>
+            <author>
+                    <name>Nadia</name>
+                    <uri>https://utenau.github.io/</uri>
+                    <email>z.giny@foxmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"><![CDATA[本文是通过对下述视频的学习总结而来。本文主要通过三个部分来总结Node.js的初体验。第一部分是对node.js的整体概述，主要讲了它是什么，能干什么，架构和主要特点以及第一个node程序。第二部分主要概括node中的module以及相关的一般性操作。第三部分概述node中的几个常用的内置模块。 [TOC]
+ Part1 概述 1.1 什么是Node.js  一个开源的，跨平台的运行JavaScript代码的运行时环境  1.2 Node.js能做什么  后端服务 对开发较大规模的，数据密集和实时性的应用有优势 node是应对web服务器高并发性能的产物  1.3 Node.js的好处  非常适合原型开发和敏捷开发 快速，高规模 JavaScript Everywhere 和前端保持代码的一致性 大量开源库的生态圈  1.4 Node.js的组成 js代码通过js-engine转换成机器码运行，浏览器（如Chrome，edge，Firefox）内置js-engine，运行js代码，浏览器本身就给js提供了一个运行时环境
+之前，js仅仅运行在浏览器上。而在2009年之后，Ryan Dahl将Chrome中的V8引擎和一些C++代码组合在一起，使得js有了可以与系统交互等能力。
+在node中，我们不再局限于在浏览器时只能操作window这样的全局对象，我们可以和文件系统，和操作系统进行交互，也有了监听端口，处理http的能力.如下代码演示：
+ document.findByElementId()「在浏览器中」
+  fs.readFileSync(new URL(&lsquo;file://hostname/p/a/t/h/file&rsquo;)); //node中可以操作文件。
+ 1.]]></summary>
+            
+                <content type="html"><![CDATA[<blockquote>
+<p>本文是通过对下述视频的学习总结而来。本文主要通过三个部分来总结Node.js的初体验。第一部分是对node.js的整体概述，主要讲了它是什么，能干什么，架构和主要特点以及第一个node程序。第二部分主要概括node中的module以及相关的一般性操作。第三部分概述node中的几个常用的内置模块。
+[TOC]</p>
+</blockquote>
+<h1 id="part1-概述">Part1 概述</h1>
+<h2 id="11-什么是nodejs">1.1 什么是Node.js</h2>
+<ul>
+<li>一个开源的，跨平台的运行JavaScript代码的运行时环境</li>
+</ul>
+<h2 id="12-nodejs能做什么">1.2 Node.js能做什么</h2>
+<ul>
+<li>后端服务</li>
+<li>对<em>开发较大规模的，数据密集和实时性</em>的应用有优势</li>
+<li>node是应对web服务器高并发性能的产物</li>
+</ul>
+<h2 id="13-nodejs的好处">1.3 Node.js的好处</h2>
+<ul>
+<li>非常适合原型开发和敏捷开发</li>
+<li>快速，高规模</li>
+<li><strong>JavaScript Everywhere</strong></li>
+<li>和前端保持代码的一致性</li>
+<li>大量开源库的生态圈</li>
+</ul>
+<h2 id="14-nodejs的组成">1.4 Node.js的组成</h2>
+<p>js代码通过js-engine转换成机器码运行，浏览器（如<em>Chrome，edge，Firefox</em>）内置js-engine，运行js代码，浏览器本身就给js提供了一个运行时环境</p>
+<p><img src="https://s1.ax1x.com/2020/03/20/8glPVU.md.png" alt="Alt text"></p>
+<p>之前，js仅仅运行在浏览器上。而在2009年之后，Ryan Dahl将Chrome中的V8引擎和一些C++代码组合在一起，使得js有了可以与系统交互等能力。</p>
+<p><img src="https://s1.ax1x.com/2020/03/20/8g18TU.md.png" alt="Alt text"></p>
+<p>在node中，我们不再局限于在浏览器时只能操作window这样的全局对象，我们可以和文件系统，和操作系统进行交互，也有了监听端口，处理http的能力.如下代码演示：</p>
+<blockquote>
+<p><del>document.findByElementId()</del>「在浏览器中」</p>
+</blockquote>
+<blockquote>
+<p>fs.readFileSync(new URL(&lsquo;file://hostname/p/a/t/h/file&rsquo;)); //node中可以操作文件。</p>
+</blockquote>
+<h2 id="15-第一个程序">1.5 第一个程序</h2>
+<p>配置环境，在macOS上通过homebrew进行下载安装，CLI键入指令 <code>brew install node</code>,完成安装
+新建文件夹用vscode打开，新建一个js文件名为<code>app.js</code>，输入以下代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hello,&#39;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">sayHello</span><span class="p">(</span><span class="nx">Nadia</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在CLI中输入<code>node app.js</code>,显示”Hello，Nadia&rdquo;.</p>
+<h2 id="16-nodejs的特点">1.6 Node.js的特点</h2>
+<ul>
+<li>单线程</li>
+<li>非阻塞IO/异步</li>
+<li>事件驱动</li>
+</ul>
+<h1 id="part2-node-module-system">part2 Node Module System</h1>
+<h2 id="21-global-object">2.1 Global Object</h2>
+<p>在浏览器中，我们使用js编写代码会使用一些固定的函数、对象或者变量，比如<code>console.log()</code>,这个函数在任意的js代码中都可以使用，是全局属性的。实际上这些全局的变量、函数、对象都是唯一的全局对象<strong>window</strong>的成员，<code>console.log()</code>实际上是<code>window.console.log()</code>，只是在编译中由js engine自动的添加上了。</p>
+<p>而在node中，由于node并不面向浏览器的，本身并没有<strong>window</strong>对象，但依然存在掌控全局的对象<strong>global</strong>,所以在node中<code>console.log()</code>=<code>global.console.log()</code></p>
+<p>当我们在代码中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">message</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">global</span><span class="p">.</span><span class="nx">message</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出的结果是<em>undefined</em>,所以，我们在当前文件中所定义的变量，作用域只限于当前文件，而不是属于全局的变量。</p>
+<h2 id="22-modules">2.2 Modules</h2>
+<p>由于在开发过程中，随着工程量的的上升，我们难免会出现变量、函数、对象的重名，倘若我们不对此做出相应的区分，那么同一变量名在全局作用域下，新的重名变量会覆盖旧的重名变量，这给开发带来了困难。</p>
+<p>因此，node.js中引入了模块（<em>Module</em>）概念，一个文件即为一个模块，模块内部的变量、方法、对象会被模块封装起来，成为模块内私有(面向对象）,作用域限定在模块内，无法被外界访问，区分了重名变量。
+<img src="https://s1.ax1x.com/2020/03/20/825nW8.md.png" alt="Module"></p>
+<p>那么问题来了，如果我们需要在一个模块中调用另一个模块的成员时，该如何操作呢？</p>
+<p>在文件中键入代码<code>console.log(module)</code>,显示下述结果</p>
+<pre><code>node subapp.js
+Module {
+  id: '.',
+  exports: {},
+  parent: null,
+  filename: '/Users/nadia/first-node-app/subapp.js',
+  loaded: false,
+  children: [],
+  paths:
+   [ '/Users/nadia/first-node-app/node_modules',
+     '/Users/nadia/node_modules',
+     '/Users/node_modules',
+     '/node_modules' ] }
+
+</code></pre><h2 id="23-creating-a-module">2.3 Creating a Module</h2>
+<p>新建一个文件，即为创建一个模块。</p>
+<ul>
+<li>创建新的文件<em>sublog.js</em></li>
+<li>将模块/模块中的成员变成公有</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">sublog</span><span class="p">.</span><span class="nx">js</span>
+
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">&#39;http://myurl.com&#39;</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span><span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">log</span> <span class="o">=</span> <span class="nx">log</span><span class="p">;</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="p">.</span><span class="nx">endPoint</span> <span class="o">=</span> <span class="nx">url</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="24-loading-a-module">2.4 Loading a Module</h2>
+<p>需要其他模块的成员，使用<strong>require(path)</strong>,其中<em>path</em>可填相对路径(字符串)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">subapp</span><span class="p">.</span><span class="nx">js</span>
+
+<span class="kr">const</span> <span class="nx">logger</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./sublog&#39;</span><span class="p">)</span><span class="p">;</span><span class="c1">//logger是一个对象
+</span><span class="c1"></span><span class="nx">logger</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">logger</span><span class="p">.</span><span class="nx">endPoint</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>结果：</p>
+<pre><code>node subapp.js
+http://myurl.com
+</code></pre><h2 id="25-module-wrapper-function">2.5 Module Wrapper Function</h2>
+<p>在模块代码即将执行的时候，Node.js会把模块用一个函数打包起来，这个函数就是<strong>Module Wrapper Function</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">exports</span><span class="p">,</span> <span class="nx">require</span><span class="p">,</span> <span class="nx">module</span><span class="p">,</span> <span class="nx">__filename</span><span class="p">,</span> <span class="nx">__dirname</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Module code actually lives in here
+</span><span class="c1"></span><span class="p">}</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>通过打包函数，模块可以将内部变量的作用域限定在模块内</p>
+<p>同时通过exports和require告诉系统接口和想要获得的接口</p>
+<p>其中&rsquo;__filename&rsquo;, &lsquo;__dirname'则给出了模块和模块所在文件夹的绝对路径</p>
+<h1 id="part3-常见基本模块">part3 常见基本模块</h1>
+<h2 id="31-path-module">3.1 Path Module</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">pathObj</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">__filename</span><span class="p">)</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">pathObj</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>结果：</p>
+<pre><code>node subapp.js
+{ root: '/',
+  dir: '/Users/nadia/first-node-app',
+  base: 'subapp.js',
+  ext: '.js',
+  name: 'subapp' }
+</code></pre><p>Path模块提供了一些处理文件和目录路径的工具</p>
+<h2 id="32-os-module">3.2 OS Module</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">os</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;os&#39;</span><span class="p">)</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">totalMemory</span> <span class="o">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">totalmem</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">freeMemory</span> <span class="o">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">freemem</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Total Memory is &#39;</span> <span class="o">+</span>  <span class="nx">totalMemory</span><span class="p">)</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="sb">Free Momory is </span><span class="si">${</span><span class="nx">freeMemory</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>结果：</p>
+<pre><code>node app.js
+Total Memory is 8589934592
+Free Momory is 110387200
+</code></pre><p>OS模块提供了一系列与操作系统相关的使用方法</p>
+<h2 id="33-file-system-module">3.3 File System Module</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span><span class="p">;</span>
+
+    <span class="c1">// const files = fs.readdirSync(&#39;./&#39;);
+</span><span class="c1"></span>    <span class="c1">// console.log(files);
+</span><span class="c1"></span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">readdir</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="nx">files</span><span class="p">)</span><span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Error&#34;</span><span class="p">,</span><span class="nx">err</span><span class="p">)</span><span class="p">;</span>
+    <span class="k">else</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Result&#39;</span><span class="p">,</span> <span class="nx">files</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>结果：</p>
+<pre><code>node app.js
+Result [ '.git', 'app.js', 'logger.js' ]
+</code></pre><p>File I/O is provided by simple wrappers around standard POSIX functions. To use this module do require(&lsquo;fs&rsquo;). All the methods have asynchronous and synchronous forms.</p>
+<h2 id="34-events-module">3.4 Events Module</h2>
+<h3 id="341-event-module-and-event-argument">3.4.1 Event Module and event argument</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">EventEmitter</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">)</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">emitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventEmitter</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+
+<span class="c1">// Register a listener
+</span><span class="c1"></span><span class="nx">emitter</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;messageLogged&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="p">)</span><span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Listener logged!&#39;</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span><span class="p">)</span><span class="p">;</span>
+<span class="c1">// Raise an event
+</span><span class="c1"></span><span class="nx">emitter</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;messageLogged&#39;</span><span class="p">)</span><span class="p">;</span>
+
+<span class="c1">// register logging listener
+</span><span class="c1"></span><span class="nx">emitter</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;messageLogging&#39;</span><span class="p">,</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span><span class="p">=&gt;</span><span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;messageLogging called&#39;</span> <span class="p">,</span><span class="nx">arg</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span><span class="p">)</span><span class="p">;</span>
+
+<span class="c1">//raise logging event
+</span><span class="c1"></span><span class="nx">emitter</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;messageLogging&#39;</span><span class="p">,</span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="nx">url</span><span class="o">:</span><span class="s2">&#34;http://&#34;</span><span class="p">}</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><pre><code>结果：
+node app.js
+Listener logged!
+messageLogging called { id: 1, url: 'http://' }
+</code></pre><h3 id="342-extending-eventemitter">3.4.2 Extending EventEmitter</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">js</span>
+<span class="kr">const</span> <span class="nx">EventEmitter</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">)</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">Logger</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./logger&#39;</span><span class="p">)</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">logger</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Logger</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+
+<span class="nx">logger</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;messageLogged&#39;</span><span class="p">,</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span><span class="p">=&gt;</span><span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;messageLogged&#39;</span><span class="p">,</span><span class="nx">arg</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span><span class="p">)</span><span class="p">;</span>
+
+<span class="nx">logger</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">logger</span><span class="p">.</span><span class="nx">js</span>
+<span class="kr">const</span> <span class="nx">EventEmitter</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">)</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s1">&#39;http://mylogger.io/log&#39;</span><span class="p">;</span>
+<span class="kr">class</span> <span class="nx">Logger</span> <span class="kr">extends</span> <span class="nx">EventEmitter</span><span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span><span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span><span class="p">;</span>
+        <span class="c1">// raise event 
+</span><span class="c1"></span>        <span class="k">this</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;messageLogged&#39;</span><span class="p">,</span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="mi">1</span><span class="p">,</span><span class="nx">url</span><span class="o">:</span><span class="s2">&#34;http://&#34;</span><span class="p">}</span><span class="p">)</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="p">;</span>
+
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Logger</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>结果：</p>
+<pre><code>node app.js
+message
+messageLogged { id: 1, url: 'http://' }
+</code></pre><h2 id="35-http-module">3.5 HTTP Module</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">js</span>
+<span class="kr">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&#34;Hello&#34;</span><span class="p">)</span><span class="p">;</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span> <span class="o">===</span> <span class="s1">&#39;/api/courses&#39;</span><span class="p">)</span><span class="p">{</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span><span class="p">)</span><span class="p">;</span>
+
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Listening on port 3000...&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>结果：</p>
+<p><img src="https://s1.ax1x.com/2020/03/21/8RSQ6s.md.png" alt="httpResult01">
+<img src="https://s1.ax1x.com/2020/03/21/8RSG7V.md.png" alt="httpResult02"></p>
+]]></content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://utenau.github.io/categories/coding/" term="coding" label="coding" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://utenau.github.io/tags/node.js/" term="Node.js" label="Node.js" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
         <entry>
             <title type="text">Js中的this问题</title>
             <link rel="alternate" type="text/html" href="https://utenau.github.io/posts/js%E4%B8%AD%E7%9A%84this%E9%97%AE%E9%A2%98/" />
@@ -212,23 +652,16 @@
             <title type="text">Hello World</title>
             <link rel="alternate" type="text/html" href="https://utenau.github.io/posts/hello-world/" />
             <id>https://utenau.github.io/posts/hello-world/</id>
-            <updated>2020-03-13T11:18:49+08:00</updated>
+            <updated>2020-03-20T15:17:09+08:00</updated>
             <published>2020-03-12T21:06:03+08:00</published>
             <author>
                     <name>Nadia</name>
                     <uri>https://utenau.github.io/</uri>
                     <email>z.giny@foxmail.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"><![CDATA[This is a YouTube page.
-  ]]></summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"><![CDATA[]]></summary>
             
-                <content type="html"><![CDATA[<p>This is a YouTube page.</p>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/w7Ft2ymGmfc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-]]></content>
+                <content type="html"><![CDATA[]]></content>
             
             
             
