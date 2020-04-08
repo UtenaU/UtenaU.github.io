@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title type="text">Kira Star</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2020-04-08T12:14:01+08:00</updated>
+    <updated>2020-04-08T23:14:34+08:00</updated>
     <id>https://utenau.github.io/</id>
     <link rel="alternate" type="text/html" href="https://utenau.github.io/" />
     <link rel="self" type="application/atom+xml" href="https://utenau.github.io/atom.xml" />
@@ -17,18 +17,296 @@
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.62.2">Hugo</generator>
         <entry>
+            <title type="text">小程序学习总结（五）:自定义组件</title>
+            <link rel="alternate" type="text/html" href="https://utenau.github.io/posts/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%BA%94/" />
+            <id>https://utenau.github.io/posts/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%BA%94/</id>
+            <updated>2020-04-08T23:13:09+08:00</updated>
+            <published>2020-04-08T21:51:17+08:00</published>
+            <author>
+                    <name>Nadia</name>
+                    <uri>https://utenau.github.io/</uri>
+                    <email>z.giny@foxmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"><![CDATA[组件化开发 为什么要使用组件化开发？
+为了减低复杂性，对复杂对象进行分解，将复杂页面整体分解成一个个较为简单的组件，通过组装组件完成复杂整体。 同时也是对组件进行封装，实现复用。
+自定义组件的基本使用  创建组件 分类管理：新建文件夹将组件统一管理 组件的构成：同页面，由四个基本文件构成 组件与页面的区别：在json配置文件中，&ldquo;component&rdquo;: true 注册组件 在使用的页面的配置文件中：  { &quot;usingComponents&quot;: { &quot;my-cpn&quot;:&quot;/components/my-cpn/my-cpn&quot; } } key段写使用组件的标签名，value段写文件路径。
+ 使用组件 在wxml文件中，使用标签名  1 2 3  &lt;!--自定义组件的基本使用 --&gt; &lt;my-cpn/&gt; &lt;my-cpn&gt;&lt;/my-cpn&gt;    注意事项 1.wxml节点标签名只包含小写字母，中划线，下划线，数字 2.自定义组件可以引用自定义组件 3.组件和页面的项目根目录名不能以“wx-”为前缀 4.app.json中注册组件，则全局都可以使用  自定义组件的样式细节 组件与页面样式间的影响 默认情况下，自定义组件的样式只受到自定义组件 wxss 的影响。]]></summary>
+            
+                <content type="html"><![CDATA[<h2 id="组件化开发">组件化开发</h2>
+<p><em>为什么要使用组件化开发？</em></p>
+<p>为了减低<strong>复杂性</strong>，对复杂对象进行分解，将复杂页面整体分解成一个个较为简单的<strong>组件</strong>，通过组装组件完成复杂整体。
+同时也是对组件进行<strong>封装</strong>，实现<strong>复用</strong>。</p>
+<h2 id="自定义组件的基本使用">自定义组件的基本使用</h2>
+<ul>
+<li>创建组件
+分类管理：新建文件夹将组件统一管理
+组件的构成：同页面，由四个基本文件构成
+组件与页面的区别：在json配置文件中，&ldquo;component&rdquo;: true</li>
+<li>注册组件
+在使用的页面的配置文件中：</li>
+</ul>
+<pre><code>{
+  &quot;usingComponents&quot;: {
+    &quot;my-cpn&quot;:&quot;/components/my-cpn/my-cpn&quot;
+  }
+}
+</code></pre><p>key段写使用组件的标签名，value段写文件路径。</p>
+<ul>
+<li>使用组件
+在wxml文件中，使用标签名</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!--</span><span class="c"> 自定义组件的基本使用 </span><span class="c">--&gt;</span>
+<span class="p">&lt;</span><span class="nt">my-cpn</span><span class="p">/</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">my-cpn</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">my-cpn</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>注意事项
+1.wxml节点标签名只包含<em>小写字母，中划线，下划线，数字</em>
+2.自定义组件可以引用自定义组件
+3.组件和页面的项目根目录名不能以“wx-”为前缀
+4.app.json中注册组件，则全局都可以使用</li>
+</ul>
+<h2 id="自定义组件的样式细节">自定义组件的样式细节</h2>
+<h3 id="组件与页面样式间的影响">组件与页面样式间的影响</h3>
+<p>默认情况下，自定义组件的样式只受到自定义组件 wxss 的影响。</p>
+<p>组件内不使用id选择器，属性选择器，标签选择器，外部使用标签选择器会影响组件。</p>
+<p>官方不建议使用id选择器，属性选择器，标签选择器</p>
+<h3 id="如何产生相互影响">如何产生相互影响</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">Component</span><span class="p">(</span><span class="p">{</span>
+  <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">styleIsolation</span><span class="o">:</span> <span class="s1">&#39;isolated&#39;</span>
+  <span class="p">}</span>
+<span class="p">}</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>styleIsolation 选项从基础库版本 2.6.5 开始支持。它支持以下取值：</p>
+<p>isolated 表示启用样式隔离，在自定义组件内外，使用 class 指定的样式将不会相互影响（一般情况下的默认值）；</p>
+<p>apply-shared 表示页面 wxss 样式将影响到自定义组件，但自定义组件 wxss 中指定的样式不会影响页面；</p>
+<p>shared 表示页面 wxss 样式将影响到自定义组件，自定义组件 wxss 中指定的样式也会影响页面和其他设置了 apply-shared 或 shared 的自定义组件。（这个选项在插件中不可用。）</p>
+<h2 id="自定义组件传递数据样式">自定义组件传递数据/样式</h2>
+<ul>
+<li>使用Component构造器
+Component 构造器可用于定义组件，调用 Component 构造器时可以指定组件的属性、数据、方法等。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// components/my-prop/my-prop.js
+</span><span class="c1"></span><span class="nx">Component</span><span class="p">(</span>
+  <span class="p">{</span>
+    <span class="nx">properties</span><span class="o">:</span><span class="p">{</span>
+      <span class="nx">title</span><span class="o">:</span><span class="p">{</span>
+        <span class="nx">type</span><span class="o">:</span><span class="nb">String</span><span class="p">,</span>
+        <span class="nx">value</span><span class="o">:</span><span class="s2">&#34;默认标题&#34;</span><span class="p">,</span>
+        <span class="nx">observer</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">newVal</span><span class="p">,</span><span class="nx">oldVal</span><span class="p">)</span><span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">newVal</span><span class="p">,</span><span class="nx">oldVal</span><span class="p">)</span>
+        <span class="p">}</span>
+
+      <span class="p">}</span>
+    <span class="p">}</span><span class="p">,</span>
+    <span class="nx">externalClasses</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;titleclass&#39;</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中<em>properties</em>是Object Map类型，用来设置组件的对外属性，是属性名到属性设置的映射表。
+<em>externalClasses</em>是数组类型，用来指定外置样式。
+<em>observers</em>	组件数据字段监听器，用于监听 properties 和 data 的变化。</p>
+<h2 id="组件内部发出事件">组件内部发出事件</h2>
+<p><em>实现需求，组件按钮，点击控制页面上的数值进行加一</em></p>
+<ul>
+<li>创建组件</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!--</span><span class="c">components/my</span><span class="c">-</span><span class="c">event/my</span><span class="c">-</span><span class="c">event.wxml</span><span class="c">--&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">size</span><span class="o">=</span><span class="s">&#39;mini&#39;</span> <span class="na">bind:tap</span><span class="o">=</span><span class="s">&#34;handleIncrement&#34;</span><span class="p"></span><span class="p">&gt;</span>+1<span class="p">&lt;</span><span class="p">/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>页面：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html">home.wxml
+<span class="p">&lt;</span><span class="nt">view</span><span class="p"></span><span class="p">&gt;</span>当前计数: {{counter}}<span class="p">&lt;</span><span class="p">/</span><span class="nt">view</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">my-event</span> <span class="p">/</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">home</span><span class="p">.</span><span class="nx">js</span>
+<span class="nx">Page</span><span class="p">(</span><span class="p">{</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">counter</span><span class="o">:</span> <span class="mi">0</span>
+  <span class="p">}</span>
+
+<span class="p">}</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>组件中监听事件</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">Component</span><span class="p">(</span><span class="p">{</span>
+
+  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">handleIncrement</span><span class="p">(</span><span class="p">)</span><span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">triggerEvent</span><span class="p">(</span><span class="s1">&#39;increment&#39;</span><span class="p">,</span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s1">&#39;nadia&#39;</span><span class="p">,</span><span class="nx">age</span><span class="o">:</span><span class="mi">21</span><span class="p">}</span><span class="p">,</span><span class="p">{</span><span class="p">}</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>要在component构造器中的methods中写监听事件函数</p>
+<p>自定义组件触发事件时，需要使用 triggerEvent 方法，指定事件名、detail对象和事件选项</p>
+<ul>
+<li>在页面中触发页面事件</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">my-event</span> <span class="na">bind:increment</span><span class="o">=</span><span class="s">&#34;handleIncrement&#34;</span><span class="p">/</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在home.js中写事件监听处理函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">home</span><span class="p">.</span><span class="nx">js</span>
+<span class="nx">Page</span><span class="p">(</span><span class="p">{</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">counter</span><span class="o">:</span> <span class="mi">0</span>
+  <span class="p">}</span><span class="p">,</span>
+  <span class="nx">handleIncrement</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---------&#39;</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setData</span><span class="p">(</span><span class="p">{</span>
+      <span class="nx">counter</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="p">}</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://utenau.github.io/categories/coding/" term="coding" label="coding" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://utenau.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" term="微信小程序" label="微信小程序" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
             <title type="text">小程序学习总结（一）:小程序的框架</title>
             <link rel="alternate" type="text/html" href="https://utenau.github.io/posts/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" />
             <id>https://utenau.github.io/posts/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/</id>
-            <updated>2020-04-07T22:57:54+08:00</updated>
+            <updated>2020-04-08T12:14:54+08:00</updated>
             <published>2020-04-07T21:30:23+08:00</published>
             <author>
                     <name>Nadia</name>
                     <uri>https://utenau.github.io/</uri>
                     <email>z.giny@foxmail.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"><![CDATA[[toc]
-代码构成与文件结构 文件结构 其中app.json是小程序的全局配置
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"><![CDATA[代码构成与文件结构 文件结构 其中app.json是小程序的全局配置
 { &quot;pages&quot;:[ &quot;pages/index/index&quot;, &quot;pages/logs/logs&quot; ], &quot;window&quot;:{ &quot;backgroundTextStyle&quot;:&quot;light&quot;, &quot;navigationBarBackgroundColor&quot;: &quot;#fff&quot;, &quot;navigationBarTitleText&quot;: &quot;WeChat&quot;, &quot;navigationBarTextStyle&quot;:&quot;black&quot; } } pages是小程序所包含的页面的相对路径，首个为打开所渲染的页面。 windows是小程序所有视窗的设置，例如导航栏的背景颜色，字体样式等，若与具体页面的设置发生冲突则以具体设置为准。
 project.config.json是工具配置
  通常大家在使用一个工具的时候，都会针对各自喜好做一些个性化配置，例如界面颜色、编译配置等等，当你换了另外一台电脑重新安装工具的时候，你还要重新配置。考虑到这点，小程序开发者工具在每个项目的根目录都会生成一个 project.config.json，你在工具上做的任何配置都会写入到这个文件，当你重新安装工具或者换电脑工作时，你只要载入同一个项目的代码包，开发者工具就自动会帮你恢复到当时你开发项目时的个性化配置，其中会包括编辑器的颜色、代码上传时自动压缩等等一系列选项。
@@ -38,8 +316,7 @@ project.config.json是工具配置
 代码由四种文件类型构成：
  json :JSON 是一种数据格式，并不是编程语言，在小程序中，JSON扮演的静态配置的角色。 wxml : WXML 充当的就是类似 HTML 的角色,用来描述小程序中当前这个页面的结构。 wxss : CSS 用来描述页面的样子，小程序中描述页面样子的是wxss。 js : 一个服务仅仅只有界面展示是不够的，还需要和用户做交互：响应用户的点击、获取用户的位置等等。在小程序里边，我们就通过编写 JS 脚本文件来处理用户的操作。  初体验 1 2 3 4 5 6 7 8 9 10 11  &lt;!]]></summary>
             
-                <content type="html"><![CDATA[<p>[toc]</p>
-<h2 id="代码构成与文件结构">代码构成与文件结构</h2>
+                <content type="html"><![CDATA[<h2 id="代码构成与文件结构">代码构成与文件结构</h2>
 <h3 id="文件结构">文件结构</h3>
 <p><img src="https://s1.ax1x.com/2020/04/07/G23jsK.png" alt="G23jsK.png"></p>
 <p>其中<em>app.json</em>是小程序的全局配置</p>
@@ -65,7 +342,7 @@ project.config.json是工具配置
 <blockquote>
 <p>sitemap.json 文件用于配置小程序及其页面是否允许被微信索引，文件内容为一个 JSON 对象，如果没有 sitemap.json ，则默认为所有页面都允许被索引</p>
 </blockquote>
-<h4 id="代码构成">代码构成</h4>
+<h3 id="代码构成">代码构成</h3>
 <p>从文件结构可以看出：文件名为app的三个文件决定了小程序的全局配置。</p>
 <p>代码由四种文件类型构成：</p>
 <ul>
@@ -571,6 +848,9 @@ project.config.json是工具配置
 </code></pre></td></tr></table>
 </div>
 </div><p><img src="https://res.wx.qq.com/wxdoc/dist/assets/img/page-lifecycle.2e646c86.png" alt="page-lifecycle"></p>
+<p>由图可见，当页面被创建时会产生两个线程（view 和appService），首先view thread会根据wxml生成页面并向AppService thread发送通知，AppService会创建page对象，一旦生成，执行onLoad生命周期函数，该函数在页面的生命周期中只执行一次，当页面显示时，执行onShow生命周期函数。AppService创建后等待通知，收到通知后发送数据，view收到数据完成初次渲染。</p>
+<p>初次渲染完成，view进入ready状态。AppService会执行onReady函数，完成后进入激活状态，并保持数据更新传送辅助view的渲染。</p>
+<p>当页面被隐藏，执行onHide函数。当界面再度被打开，执行onShow函数。最终页面被关闭，执行onUnload函数。线程终结，整个page的生命周期结束。</p>
 ]]></content>
             
             
