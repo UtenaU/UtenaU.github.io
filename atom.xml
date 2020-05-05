@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
     <title type="text">Kira Star</title>
     <subtitle type="html">MemE is a powerful and highly customizable GoHugo theme for personal blogs.</subtitle>
-    <updated>2020-04-08T23:14:34+08:00</updated>
+    <updated>2020-05-05T10:36:21+08:00</updated>
     <id>https://utenau.github.io/</id>
     <link rel="alternate" type="text/html" href="https://utenau.github.io/" />
     <link rel="self" type="application/atom+xml" href="https://utenau.github.io/atom.xml" />
@@ -17,10 +17,358 @@
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights>
     <generator uri="https://gohugo.io/" version="0.62.2">Hugo</generator>
         <entry>
+            <title type="text">Node Js学习_1</title>
+            <link rel="alternate" type="text/html" href="https://utenau.github.io/posts/node-js%E5%AD%A6%E4%B9%A0_1/" />
+            <id>https://utenau.github.io/posts/node-js%E5%AD%A6%E4%B9%A0_1/</id>
+            <updated>2020-05-05T10:34:26+08:00</updated>
+            <published>2020-05-05T09:24:05+08:00</published>
+            <author>
+                    <name>Nadia</name>
+                    <uri>https://utenau.github.io/</uri>
+                    <email>z.giny@foxmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)</rights><summary type="html"><![CDATA[使用Hapi.js进行基础项目工程搭建  初始化 Node.js 项目   npm init
+  安装 hapi 模块   npm i hapi@16
+  最基础的 hapi 服务代码 创建入口文件 app.js  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27  // app.]]></summary>
+            
+                <content type="html"><![CDATA[<h2 id="使用hapijs进行基础项目工程搭建">使用Hapi.js进行基础项目工程搭建</h2>
+<ul>
+<li>初始化 Node.js 项目</li>
+</ul>
+<blockquote>
+<p>npm init</p>
+</blockquote>
+<ul>
+<li>安装 hapi 模块</li>
+</ul>
+<blockquote>
+<p>npm i hapi@16</p>
+</blockquote>
+<ul>
+<li>最基础的 hapi 服务代码
+创建入口文件 <strong>app.js</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// app.js
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">Hapi</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;hapi&#39;</span><span class="p">)</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Hapi</span><span class="p">.</span><span class="nx">Server</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+<span class="c1">// 配置服务器启动 host 与端口
+</span><span class="c1"></span><span class="nx">server</span><span class="p">.</span><span class="nx">connection</span><span class="p">(</span><span class="p">{</span>
+  <span class="nx">port</span><span class="o">:</span> <span class="mi">3000</span><span class="p">,</span>
+  <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
+<span class="p">}</span><span class="p">)</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">init</span> <span class="o">=</span> <span class="nx">async</span> <span class="p">(</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">server</span><span class="p">.</span><span class="nx">route</span><span class="p">(</span><span class="p">[</span>
+    <span class="c1">// 创建一个简单的 hello hapi 接口
+</span><span class="c1"></span>    <span class="p">{</span>
+      <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+      <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+      <span class="nx">handler</span><span class="o">:</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">reply</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">reply</span><span class="p">(</span><span class="s1">&#39;hello hapi&#39;</span><span class="p">)</span><span class="p">;</span>
+      <span class="p">}</span><span class="p">,</span>
+    <span class="p">}</span><span class="p">,</span>
+  <span class="p">]</span><span class="p">)</span><span class="p">;</span>
+  <span class="c1">// 启动服务
+</span><span class="c1"></span>  <span class="nx">await</span> <span class="nx">server</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="sb">Server running at: </span><span class="si">${</span><span class="nx">server</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">uri</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span><span class="p">;</span>
+
+<span class="nx">init</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>与express进行对比</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">exp</span> <span class="o">=</span> <span class="nx">express</span><span class="p">(</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">port</span> <span class="o">=</span><span class="mi">3000</span>
+
+<span class="nx">exp</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="nx">res</span><span class="p">)</span><span class="p">=&gt;</span><span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;Hello&#34;</span><span class="p">)</span>
+<span class="p">}</span><span class="p">)</span>
+
+<span class="nx">exp</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/static&#39;</span><span class="p">,</span><span class="nx">express</span><span class="p">.</span><span class="kr">static</span><span class="p">(</span><span class="s1">&#39;public&#39;</span><span class="p">)</span><span class="p">)</span>
+<span class="nx">exp</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span><span class="p">(</span><span class="p">)</span><span class="p">=&gt;</span><span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Example app listening at http://localhost:${{port}}&#39;</span><span class="p">)</span>
+<span class="p">}</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可见：
+1.hapi的语法使用了类似json的形式，使用键值对，更易阅读和扩展
+2.hapi使用了async函数，使用es6语法</p>
+<p>ps. 番外：javascript的异步编程</p>
+<ul>
+<li>启动hapi服务</li>
+</ul>
+<blockquote>
+<p>node app.js
+或者
+nodemon app.js</p>
+</blockquote>
+<ul>
+<li>验证hapi 服务</li>
+</ul>
+<h2 id="结构化项目工程重构">结构化项目工程重构</h2>
+<p>基础 API 服务的搭建，将所有的代码信息都集中在了一个文件之中，这样很难满足日后项目规模扩大所要求的代码可维护性。</p>
+<p>为项目工程代码的书写，约定形成一套良好的模块化文件结构与规范，以预留足够的可扩展空间，这是一门架构设计的艺术，宛若一场大气的棋局，棋手早早地预知了未来而有所布设。一大波赶来的后续业务需求，都可以在这套规则体系下各得其所，从容不迫，游刃有余。</p>
+<h3 id="项目工程化设计原则">项目工程化设计原则</h3>
+<ul>
+<li>单业务模块化</li>
+</ul>
+<p>大多数的内务需求，都最终可以被归纳进单个模块，模块与模块间具有物理文件独立性，能更好地便于多人的项目团队人员同时维护代码。</p>
+<ul>
+<li>模块二百行原则</li>
+</ul>
+<p>二百行是个虚数泛指，但也在大量的项目实践后发现，大多数单文件的模块代码，在良好的设计规划下，往往很难突破两百行的数目，而两百行内的代码的阅读与维护，也都是一个心理压力较小的量级。</p>
+<p>正所谓合久必分，单个模块的代码量大量增长，可以考虑分离部分代码到外部文件来管理，通过模块 require 的方式形成关联，以保持各模块代码的相对精简与可维护性。</p>
+<ul>
+<li>同类模块分组化</li>
+</ul>
+<p>分组在本文中一般指形成一个文件目录，来对一些功能相似的业务模块形成管理，比如常见的路由模块，会有大量不同的基于 resource 的资源路由，被分离在单个模块文件中，最终汇总在 router 的目录。再比如定义数据库表结构映射关系的 model 模型类模块，最终也往往会习惯汇总到一个 model 的目录中，形成统一管理。</p>
+<ul>
+<li>配置文件分离</li>
+</ul>
+<p>系统中往往会存在一些诸如服务启动的端口号、服务名称、数据库连接配置、服务启动的性能参数域值配置等等，这些参数的业务逻辑往往离散在系统中的各个独立模块中，将其抽取在一个统一的类似 config.js 的配置文件中进行整体管理，可以避免日后打地鼠式的在模块中四处找寻，以及修改编辑疏漏。</p>
+<h2 id="重构步骤">重构步骤</h2>
+<ul>
+<li>
+<p>重新梳理项目工程目录
+├── config                       # 项目配置目录
+|   ├── index.js                 # 配置项目中的配置信息
+├── models                       # 数据库 model
+├── node_modules                 # node.js 的依赖目录
+├── plugins                      # 插件目录
+├── routes                       # 路由目录
+│   ├── hello-world.js           # 测试接口 hello-world
+├── utils                        # 工具类相关目录
+├── app.js                       # 项目入口文件
+├── package.json                 # JS 项目工程依赖库
+├── readme.md                    # 项目工程如何被使用的说明手册</p>
+</li>
+<li>
+<p>分离路由配置
+在 routes 目录添加一个 hello-hapi.js 文件:</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// routes/hello-hapi.js
+</span><span class="c1"></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+    <span class="nx">handler</span><span class="o">:</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">reply</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="nx">reply</span><span class="p">(</span><span class="s1">&#39;hapi&#39;</span><span class="p">)</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>分离 config 基础参数配置
+在 config 目录添加一个 index.js 文件，将服务启动的相关配置，移动到 config 中：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// config/index.js
+</span><span class="c1"></span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">host</span><span class="o">:</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
+  <span class="nx">port</span><span class="o">:</span> <span class="mi">3000</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>关联 config 与 route 路由模块</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// APP 入口的 JS
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">Hapi</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;hapi&#39;</span><span class="p">)</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./config&#39;</span><span class="p">)</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">routesHelloHapi</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./routes/hello-hapi&#39;</span><span class="p">)</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">server</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Hapi</span><span class="p">.</span><span class="nx">Server</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+<span class="c1">// 配置服务器启动 host 与端口
+</span><span class="c1"></span><span class="nx">server</span><span class="p">.</span><span class="nx">connection</span><span class="p">(</span><span class="p">{</span>
+  <span class="nx">port</span><span class="o">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span>
+  <span class="nx">host</span><span class="o">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">host</span><span class="p">,</span>
+<span class="p">}</span><span class="p">)</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">init</span> <span class="o">=</span> <span class="nx">async</span> <span class="p">(</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">server</span><span class="p">.</span><span class="nx">route</span><span class="p">(</span><span class="p">[</span>
+    <span class="c1">// 创建一个简单的 hello hapi 接口
+</span><span class="c1"></span>    <span class="p">...</span><span class="nx">routesHelloHapi</span><span class="p">,</span>
+  <span class="p">]</span><span class="p">)</span><span class="p">;</span>
+  <span class="c1">// 启动服务
+</span><span class="c1"></span>  <span class="nx">await</span> <span class="nx">server</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="sb">Server running at: </span><span class="si">${</span><span class="nx">server</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">uri</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span><span class="p">;</span>
+<span class="p">}</span><span class="p">;</span>
+
+<span class="nx">init</span><span class="p">(</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="环境配置">环境配置</h3>
+<p>环境配置的重要性</p>
+<p>理论上，基础项目代码分离至上述情况，已经初步具备了支撑不断增长的业务需求的设计弹性。但是对于应用程序运行的环境来说，不同的环境往往有不同的配置。</p>
+<p>例如，我们的本地数据库连接用户名密码与服务器环境的用户名密码并不一样。又例如，我们本地启动服务的 IP 与端口与服务器环境有所不同。缺乏环境配置文件的硬编码开发，虽然书写代码省事，但会给我们后续长期维护项目代码带来极大的麻烦与编辑修改配置的风险隐患。</p>
+<p>我们在项目的实践过程中，往往也会和一些敏感的数据信息打交道，比如数据库的连接用户名、密码，第三方 SDK 的 secret 等。这些参数的配置信息，原则上是禁止进入到 git 版本仓库的。一来在开发环境中，不同的开发人员本地的开发配置各有不同，不依赖于 git 版本库配置。二来敏感数据的入库，增加了人为泄漏配置数据的风险，任何可以访问 git 仓库的开发人员，都可以从中获取到生产环境的 secret key。一旦被恶意利用，后果不堪设想。</p>
+<p>于是我们考虑引入一个被 .gitignore 的 .env 的文件，以 key-value 的方式，记录系统中所需要的可配置环境参数。并同时配套一个.env.example 的示例配置文件用来放置占位，.env.example 可以放心地进入 git 版本仓库。</p>
+<p>以当前的项目为例</p>
+<p>我们在本地创建一个 .env.example 文件作为配置模板，内容如下：</p>
+<blockquote>
+<p>.env.expamle</p>
+</blockquote>
+<p>服务的启动名字和端口，但也可以缺省不填值，默认值的填写只是一定程度减少起始数据配置工作
+HOST = 127.0.0.1
+PORT = 3000
+然后复制出一份真实的 .env 文件，来供系统最终使用，填入真实可用的配置信息。</p>
+<blockquote>
+<p>.env</p>
+</blockquote>
+<p>服务的启动名字和端口</p>
+<pre><code>HOST = 127.0.0.1
+PORT = 3000
+如何读取 .env 中的配置值
+</code></pre><p>Node.js 可以通过 env2 的插件，来读取 .env 配置文件，加载后的环境配置参数，可以通过例如  process.env.POST 来读取端口信息。</p>
+<p>系统全局安装</p>
+<pre><code>supervisor
+npm i env2
+// app.js
+
+require('env2')('./.env')
+</code></pre><p>config/index.js中的配置参数最终变为如下：</p>
+<p>// config/index.js</p>
+<p>const { env } = process;</p>
+<p>module.exports = {
+host: env.host,
+port: env.port,<br>
+}
+最后，记得在 .gitignore 文件中增加一行 .env，用来避免该文件的 git 版本入库。同时在未来交付生产环境的时候，环境参数的配置交由生产环境的运维人员处理，项目的敏感配置数据的安全性可以得到一定程度的保证。</p>
+]]></content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://utenau.github.io/categories/coding/" term="coding" label="coding" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://utenau.github.io/tags/node.js/" term="Node.js" label="Node.js" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
             <title type="text">小程序学习总结（五）:自定义组件</title>
             <link rel="alternate" type="text/html" href="https://utenau.github.io/posts/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%BA%94/" />
             <id>https://utenau.github.io/posts/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%BA%94/</id>
-            <updated>2020-04-08T23:13:09+08:00</updated>
+            <updated>2020-04-15T20:58:24+08:00</updated>
             <published>2020-04-08T21:51:17+08:00</published>
             <author>
                     <name>Nadia</name>
@@ -265,7 +613,176 @@ Component 构造器可用于定义组件，调用 Component 构造器时可以�
 <span class="p">}</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
-</div>]]></content>
+</div><h2 id="tab-control的练习">tab-control的练习</h2>
+<p>业务要求：</p>
+<p>实现下列界面，有多个选项，默认选在第一个，选中时字体为红底下有红色边线。
+<img src="https://s1.ax1x.com/2020/04/09/G4rQfA.png" alt="G4rQfA.png"></p>
+<p>要求使用自定义组件，选项内容由页面传入。</p>
+<p>实现方案：</p>
+<ul>
+<li>组件设计</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="c">&lt;!--</span><span class="c">components/w</span><span class="c">-</span><span class="c">tab</span><span class="c">-</span><span class="c">control/w</span><span class="c">-</span><span class="c">tab</span><span class="c">-</span><span class="c">control.wxml</span><span class="c">--&gt;</span>
+<span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;tab-control&#34;</span><span class="p"></span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">block</span> <span class="na">wx:for</span><span class="o">=</span><span class="s">&#34;{{titles}}&#34;</span> <span class="na">wx:key</span><span class="o">=</span><span class="s">&#34;{{index}}&#34;</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">view</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;tab-item {{currentIndex == index ? &#34;active&#34; : &#34;&#34;}}&#39;</span>
+          <span class="na">bind:tap</span><span class="o">=</span><span class="s">&#34;handleItemClick&#34;</span>
+          <span class="na">data-index</span><span class="o">=</span><span class="s">&#34;{{index}}&#34;</span>
+    <span class="p"></span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">text</span><span class="p"></span><span class="p">&gt;</span>{{item}}<span class="p">&lt;</span><span class="p">/</span><span class="nt">text</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">view</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="p">/</span><span class="nt">block</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">view</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>组件样式设计</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">tab-control</span><span class="p">{</span>
+  <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
+  <span class="k">height</span><span class="p">:</span> <span class="mi">88</span><span class="n">rpx</span><span class="p">;</span>
+  <span class="k">line-height</span><span class="p">:</span> <span class="mi">88</span><span class="n">rpx</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">tab-item</span><span class="p">{</span>
+  <span class="k">flex</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+  <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">active</span><span class="p">{</span>
+  <span class="k">color</span><span class="p">:</span><span class="kc">pink</span><span class="p">;</span>
+
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">active</span> <span class="nt">text</span> <span class="p">{</span>
+  <span class="k">padding</span><span class="p">:</span> <span class="mi">20</span><span class="n">rpx</span> <span class="mi">16</span><span class="n">rpx</span><span class="p">;</span>
+  <span class="k">border-bottom</span><span class="p">:</span> <span class="mi">6</span><span class="n">rpx</span> <span class="kc">solid</span> <span class="kc">pink</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>组件逻辑设计</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// components/w-tab-control/w-tab-control.js
+</span><span class="c1"></span><span class="nx">Component</span><span class="p">(</span><span class="p">{</span>
+  <span class="cm">/**
+</span><span class="cm">   * 组件的属性列表
+</span><span class="cm">   */</span>
+  <span class="nx">properties</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">titles</span><span class="o">:</span><span class="p">{</span>
+      <span class="nx">type</span><span class="o">:</span><span class="nb">Array</span><span class="p">,</span>
+      <span class="nx">value</span><span class="o">:</span><span class="p">[</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span><span class="p">,</span>
+
+  <span class="cm">/**
+</span><span class="cm">   * 组件的初始数据
+</span><span class="cm">   */</span>
+  <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">currentIndex</span><span class="o">:</span> <span class="mi">0</span>
+  <span class="p">}</span><span class="p">,</span>
+
+  <span class="cm">/**
+</span><span class="cm">   * 组件的方法列表
+</span><span class="cm">   */</span>
+  <span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">handleItemClick</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">index</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setData</span><span class="p">(</span><span class="p">{</span>
+        <span class="nx">currentIndex</span><span class="o">:</span><span class="nx">index</span>
+      <span class="p">}</span><span class="p">)</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">triggerEvent</span><span class="p">(</span><span class="s1">&#39;itemclick&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">title</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">titles</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="p">}</span><span class="p">,</span> <span class="p">{</span><span class="p">}</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>页面使用</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">w-tab-control</span> <span class="na">titles</span><span class="o">=</span><span class="s">&#34;{{[&#39;one piece&#39;,&#39;naruto&#39;,&#39;bleach&#39;]}}&#34;</span>
+                <span class="na">handleTabClick</span><span class="o">=</span><span class="s">&#34;handleTabClick&#34;</span>
+<span class="p">/</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="获取组件对象的方式">获取组件对象的方式</h2>
+]]></content>
             
             
             
